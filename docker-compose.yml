@@ -18,3 +18,15 @@ services:
       python manage.py migrate &&
       python manage.py runserver 0.0.0.0:8000
       "
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    environment:
+      - VITE_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - VITE_API_URL=http://localhost:8000/api/v1
