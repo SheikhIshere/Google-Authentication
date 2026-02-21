@@ -6,7 +6,7 @@ A modern full-stack application featuring Google OAuth authentication with Djang
 
 | 🖥️ Application Interface | 📱 Dashboard View | 🔐 Authentication Flow |
 |---|---|---|
-| ![App Screenshot](asset/Screenshot%20from%202026-02-21%2017-04-21.png =400x250) | ![Dashboard](asset/Screenshot%20from%202026-02-21%2017-04-35-fotor-2026022117611.png =400x250) | ![Auth Flow](asset/Screenshot%20from%202026-02-21%2017-04-35-fotor-2026022117816.png =400x250) |
+| ![App Screenshot](asset/app-interface.png) | ![Dashboard](asset/dashboard-view.png) | ![Auth Flow](asset/auth-flow.png) |
 
 ## ⭐ **Key Features**
 
