@@ -1,12 +1,24 @@
 FROM python:3.12-slim
 
-WORKDIR /app
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
 
-COPY requirements.txt .
+# Copy requirements first (Docker layer caching)
+COPY ./requirements.txt /requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Install OS dependencies + Python packages
+RUN apt-get update && \
+    pip install --upgrade pip && \
+    pip install -r /requirements.txt && \
+    rm -rf /var/lib/apt/lists/*
 
-COPY App/ .
+# Copy .env file
+COPY .env .
+
+# Copy project files
+COPY ./backend /backend
+
+WORKDIR /backend
 
 EXPOSE 8000
 

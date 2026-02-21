@@ -1,7 +1,20 @@
 version: '3.8'
 
 services:
-  web:
+  backend:
     build: .
     ports:
       - "8000:8000"
+    volumes:
+      - ./backend:/backend
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=${SECRET_KEY}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+    command: >
+      sh -c "
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000
+      "
